@@ -1,0 +1,70 @@
+{
+  "pluginAlias": "HttpSensors",
+  "pluginType": "platform",
+  "singular": true,
+  "headerDisplay": "Homebridge plugin for Http Api devices",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "title": "Name",
+        "type": "string",
+        "required": true,
+        "default": "Http Sensors"
+      },
+      "devices": {
+        "type": "array",
+        "items": {
+          "title": "Device",
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "Sensor ID",
+              "type": "string",
+              "placeholder": "ABC123",
+              "pattern": "^[A-Fa-f0-9]{6,12}$",
+              "required": true
+            },
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "placeholder": "Temperature Sensor",
+              "required": true,
+              "default": "Sensor"
+            },
+            "url": {
+              "title": "Api URL",
+              "type": "string",
+              "placeholder": "http://192.168.1.100",
+              "required": true,
+              "default": "http://192.168.1.100"
+            },
+            "pullInterval": {
+              "title": "Pull Interval",
+              "type": "integer",
+              "placeholder": 60000,
+              "description": "The number of milliseconds between http requests."
+            },
+            "type": {
+              "title": "Sensor type",
+              "type": "string",
+              "required": true,
+              "typeahead": {
+                "source": [
+                  "temperature",
+                  "humidity"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "platform": {
+        "title": "Platform",
+        "type": "string",
+        "required": true,
+        "default": "HttpSensors"
+      }
+    }
+  }
+}
